@@ -8,10 +8,24 @@ use std::time::Duration;
 const MSG_SIZE: usize = 64;
 
 fn request_receiver_key(key_id:String) -> String{
+    //let body = reqwest::get("https://www.rust-lang.org")
+    //.await?
+    //.text()
+    //.await?;
+    //println!("body = {:?}", body);
+    fn encrypt_message(mut message:String,key:String) -> String{
+    message.push_str(&key);
+    message
+}
     String::from("DEF|1")
 }
 
 fn request_sender_key() ->  String{
+    //let body = reqwest::get("https://www.rust-lang.org")
+    //.await?
+    //.text()
+    //.await?;
+    //println!("body = {:?}", body);
     let sender_key =String::from("ABC|1");
     write_key(sender_key)
 }
@@ -37,6 +51,10 @@ fn write_key(key:String) -> String{
     let mut file = std::fs::File::create("storage.key").expect("create failed");
     file.write_all(key.as_bytes()).expect("write failed");
     key
+}
+
+fn decrypt_message(mut message:String,key:String) -> String{
+    String::from("Test")
 }
 
 fn encrypt_message(mut message:String,key:String) -> String{
